@@ -4,9 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "export NODE_ENV=test && sequelize db:drop || true && sequelize db:create && sequelize db:migrate && node ./src/bin/www",
-    "dev": "export NODE_ENV=test && sequelize db:drop || true && sequelize db:create && sequelize db:migrate && nodemon ./src/bin/www",
-    "test": "export NODE_ENV=test && sequelize db:drop || true && sequelize db:create && sequelize db:migrate &&  jest  ./src/test --forceExit --coverage",
+    "start": "sequelize db:migrate && node ./src/bin/www",
+    "dev": "sequelize db:migrate && nodemon ./src/bin/www",
+    "test": "export NODE_ENV=test && sequelize db:drop || true && sequelize db:create && sequelize db:migrate &&  jest  ./src/test --forceExit --coverage && codecov -t 338d152d-2795-4932-8589-4d5771bf49e2",
     "test:watch": "export NODE_ENV=test && sequelize db:drop || true && sequelize db:create && sequelize db:migrate &&  jest  ./src/test --forceExit --coverage --watch"
   },
   "keywords": [],
@@ -22,8 +22,10 @@
     "sequelize": "^5.18.4"
   },
   "devDependencies": {
+    "codecov": "^3.6.1",
     "jest": "^24.9.0",
     "nodemon": "^1.19.2",
-    "sequelize-cli": "^5.5.1"
+    "sequelize-cli": "^5.5.1",
+    "supertest": "^4.0.2"
   }
 }
