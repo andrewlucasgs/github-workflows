@@ -1,11 +1,14 @@
-FROM node:8
+FROM node:8-alpine
 
 ARG NODE_ENV=production
 ENV NODE_ENV ${NODE_ENV}
 
 ARG APP_DIR=app
-RUN mkdir -p ${APP_DIR}
-WORKDIR ${APP_DIR}
+RUN mkdir -p /app && chown node:node /app
+
+USER node
+
+WORKDIR /app
 
 # Install dependencies
 COPY package*.json ./
@@ -21,6 +24,4 @@ COPY . .
 # Expose running port
 EXPOSE 3000
 
-RUN chown -R node:node ${APP_DIR}
 
-USER node

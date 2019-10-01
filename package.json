@@ -7,7 +7,7 @@
     "start": "sequelize db:migrate && node ./src/bin/www",
     "dev": "sequelize db:migrate && nodemon ./src/bin/www",
     "test": "export NODE_ENV=test && sequelize db:drop || true && sequelize db:create && sequelize db:migrate &&  jest  ./src/test --forceExit",
-    "test:coverage": "export NODE_ENV=test && sequelize db:drop || true && sequelize db:create && sequelize db:migrate &&  jest  ./src/test --forceExit --coverage && codecov -t 338d152d-2795-4932-8589-4d5771bf49e2",
+    "test:coverage": "export NODE_ENV=test && sequelize db:drop || true && sequelize db:create && sequelize db:migrate &&  jest  ./src/test --config jestconfig.json --forceExit --coverage && codecov -t 338d152d-2795-4932-8589-4d5771bf49e2",
     "test:watch": "export NODE_ENV=test && sequelize db:drop || true && sequelize db:create && sequelize db:migrate &&  jest  ./src/test --forceExit --coverage --watch"
   },
   "keywords": [],
