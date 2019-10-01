@@ -7,37 +7,37 @@ describe("User Controller", function() {
       jest.restoreAllMocks();
       jest.resetAllMocks();
     });
-    it("returns empty list", async () => {
-      let req = {};
-      let send = jest.fn(data => ({ data }));
-      let status = jest.fn(code => ({ send }));
-      const res = {
-        status
-      };
+    // it("returns empty list", async () => {
+    //   let req = {};
+    //   let send = jest.fn(data => ({ data }));
+    //   let status = jest.fn(code => ({ send }));
+    //   const res = {
+    //     status
+    //   };
 
-      jest.spyOn(User, "findAll").mockImplementation(() => Promise.resolve([]));
+    //   jest.spyOn(User, "findAll").mockImplementation(() => Promise.resolve([]));
 
-      await userController.list(req, res);
+    //   await userController.list(req, res);
 
-      expect(status).toHaveBeenCalledWith(200);
-      expect(send).toHaveBeenCalledWith([]);
-    });
-    it("returns all users", async () => {
-      let req = {};
-      let send = jest.fn(data => ({ data }));
-      let status = jest.fn(code => ({ send }));
-      const res = {
-        status
-      };
-      let users = [{ username: "andrew", email: "email@email.com" }];
-      jest
-        .spyOn(User, "findAll")
-        .mockImplementation(() => Promise.resolve(users));
+    //   expect(status).toHaveBeenCalledWith(200);
+    //   expect(send).toHaveBeenCalledWith([]);
+    // });
+    // it("returns all users", async () => {
+    //   let req = {};
+    //   let send = jest.fn(data => ({ data }));
+    //   let status = jest.fn(code => ({ send }));
+    //   const res = {
+    //     status
+    //   };
+    //   let users = [{ username: "andrew", email: "email@email.com" }];
+    //   jest
+    //     .spyOn(User, "findAll")
+    //     .mockImplementation(() => Promise.resolve(users));
 
-      await userController.list(req, res);
-      expect(status).toHaveBeenCalledWith(200);
-      expect(send).toHaveBeenCalledWith(users);
-    });
+    //   await userController.list(req, res);
+    //   expect(status).toHaveBeenCalledWith(200);
+    //   expect(send).toHaveBeenCalledWith(users);
+    // });
     it("returns 404 when error", async () => {
       let req = {};
       let send = jest.fn(data => ({ data }));
